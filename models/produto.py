@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path.append(os.path.abspath(''))
+sys.path.append(os.path.abspath('.'))
 
 from constants.const import (
     PRODUTOS_CSV,
@@ -9,7 +9,7 @@ from constants.const import (
 )
 from utils.funcoes import (
     matricula,
-    escrita_csv
+    cadastrar_produto_csv
 )
 
 
@@ -21,7 +21,7 @@ class Produto:
         self.id: int = matricula()
 
     def cadastrar_produto(self):
-        escrita_csv(
+        cadastrar_produto_csv(
             'produtos.csv',
             CABECALHO,
             self.id,
