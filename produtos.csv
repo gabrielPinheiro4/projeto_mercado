@@ -1,0 +1,31 @@
+id_produto,nome_produto,preco,quantidade_estoque
+1,Arroz,5.99,100
+2,Feijão,4.50,80
+3,Macarrão,2.99,120
+4,Óleo de Soja,7.50,50
+5,Leite,3.49,60
+6,Café,8.99,40
+7,Açúcar,2.75,75
+8,Sal,1.50,90
+9,Farinha de Trigo,3.25,65
+10,Sabonete,1.99,110
+11,Biscoitos,4.25,70
+12,Chocolate,2.49,55
+13,Carne Moída,9.99,30
+14,Frango Congelado,6.75,25
+15,Sabão em Pó,5.50,45
+16,Escova de Dentes,1.79,95
+17,Shampoo,7.25,35
+18,Condicionador,6.99,40
+19,Detergente,2.20,85
+20,Desodorante,4.75,50
+21,Lâminas de Barbear,3.20,75
+22,Iogurte,3.00,55
+23,Queijo Prato,8.50,30
+24,Tomate em Lata,2.99,65
+25,Cerveja,12.99,20
+26,Refrigerante,4.25,40
+27,Sabonete Líquido,5.49,60
+28,Lâmpada LED,9.75,15
+29,Guardanapos,1.25,100
+30,Papel Higiênico,3.99,50
