@@ -19,7 +19,7 @@ class Pedido(Produto):
         self.produto: list = produtos
         self.carrinho: list = []
 
-    def comprar_produto(self):
+    def comprar_produto(self) -> str:
         for produto in self.produto:
             for produto_csv in PRODUTOS_CSV:
                 if remover_acentos(produto) == remover_acentos(produto_csv.get('nome_produto')):
@@ -27,26 +27,51 @@ class Pedido(Produto):
         
         return 'Produto adicionado ao carrinho'
     
-    def visualizar_carrinho(self):
+    def visualizar_carrinho(self) -> list:
         return self.carrinho
     
-    def fechar_pedido(self):
-        lista = []
-        if len(self.carrinho) > 0:
+    def verificar_preco_total(self) -> float:
+        valor_total = []
+        for produto in self.carrinho:
+            valor_total.append(float(produto.get('preco')))
+        
+        return sum(valor_total)
+    
+    def fechar_pedido(self) -> str:
+        
+        if len(self.carrinho) > 0 or self.carrinho != []:
+            lista = []
+        
+            print(f'Valor Total: {self.verificar_preco_total()}')
+
+            valor_pagar = float( input('Digite o valor pago: '))
+            troco = abs(self.verificar_preco_total() - valor_pagar)
+
             for produto in self.carrinho:
+                
+                if valor_pagar < self.verificar_preco_total():
+                    return 'Valor insuficiente'
+                
                 for produto_csv in PRODUTOS_CSV:
                     if produto == produto_csv:
                         quantidade = int(produto_csv.get('quantidade_estoque'))
                         quantidade -= 1
                         produto_csv.update({'quantidade_estoque': quantidade})
-                        print(produto_csv)
+
                     lista.append(produto_csv)
-        
+
             fechar_carrinho_csv('produtos.csv', CABECALHO, lista)
+            self.carrinho.clear()
 
-            return 'Pedido concluido'
+            return (
+                'Pedido concluido \n'
+                'O carrinho foi zerado \n'
+                f'Troco: {troco}'
+            )
+        return 'Seu carrinho está vazio'
 
 
-pedido1 = Pedido(['sabonete', 'biscoitos'])
+pedido1 = Pedido(['sabonete'])
 print(pedido1.comprar_produto())
-pedido1.fechar_pedido()
+print(pedido1.fechar_pedido())
+# pedido1.verificar_preco_total()
