@@ -1,6 +1,8 @@
 import os
 import sys
+from json import dumps
 
+# Pega o caminho do diretório pai
 sys.path.append(os.path.abspath('.'))
 
 from constants.const import (
@@ -14,12 +16,13 @@ from utils.funcoes import (
 
 
 class Produto:
-    def __init__(self, nome, preco, quantidade) -> None:
+    def __init__(self, nome: str, preco: float, quantidade: int) -> None:
         self.nome: str = nome
         self.preco: float = preco
         self.quantidade: int = quantidade
         self.id: int = matricula()
 
+    # Escreve a instância do objeto no arquivo produtos.csv
     def cadastrar_produto(self):
         cadastrar_produto_csv(
             'produtos.csv',
@@ -32,10 +35,6 @@ class Produto:
 
         return 'Produto cadastrado com sucesso'
 
+    # Lista todos os produtos do arquivo prosutos.csv indentado
     def listar_produtos(self) -> list:
-        return PRODUTOS_CSV
-    
-
-produto1 = Produto('Sucrilhos', 25.99, 10)
-produto2 = Produto('Fanta', 50.99, 20)
-# print(produto1.cadastrar_produto())
+        return dumps(PRODUTOS_CSV, indent=4)
